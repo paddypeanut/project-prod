@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<div id ="login-panel" class="bg-white content-panel">
+		<h1>Login</h1>
+		
+		<% if logged_in? %>
+		    <h2>You are Logged In, <%= current_user.username %></h2>
+		<%else%>
+		
+		
+		<div class="login-wrapper">
+		 <%= form_tag '/login' do %>
+		   <!--<%= label_tag :username%><br>-->
+		   <%= text_field_tag :username ,  '',placeholder: "Username"%><br>
+		   <!--<%= label_tag :password%><br>-->
+		   <%= password_field_tag :password ,'' ,placeholder: "Password"%><br><br>
+		   <%= submit_tag "Login"%>
+		<%end%>
+	</div>
+		<% end %>
+	</div>
+</div>

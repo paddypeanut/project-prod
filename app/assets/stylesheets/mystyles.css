@@ -1,0 +1,90 @@
+body {
+	background-color:#00A6FB;
+	/*background-image:url("bg.png");
+	background-repeat: repeat;*/
+	font-family: 'Manrope', sans-serif;
+	line-height:2em;
+}
+
+
+
+.my-container {
+	padding:2.5em;
+}
+
+.vertical-nav {
+	background-color:#051923;
+
+}
+
+.vertical-nav a {
+	color:#f0f1fa;
+	font-family: 'Manrope', sans-serif;
+	font-size:1.5em;
+	line-height: 1.5em;
+}
+
+.vertical-nav .nav-item a:link {
+	background-color:#051923;
+}
+
+.vertical-nav .nav-item a:visited {
+	background-color:#051923;
+}
+
+.vertical-nav .nav-item a:hover {
+	background-color:#003554;
+}
+
+.nav {
+	padding-top:2.5em;
+	margin-top:40px;
+}
+
+.nav-item ul {
+	list-style-type: none;
+	font-size:0.8em;
+	padding:0px;
+}
+
+.nav-item ul li a {
+	display:block;
+	padding-left:40px;
+}
+
+.page-content a:link,.page-content a:active,.page-content a:visited {
+	text-decoration:underline;
+	color:rgb(77, 122, 235);
+	transition: color 0.25s ease;
+}
+
+.page-content a:hover {
+	background:transparent;
+	color:rgb(24, 62, 158);
+	transition: color 0.25s ease;
+}
+
+.page-content p {
+	font-size:1.2em;
+}
+
+#pagination {
+	margin:0px auto;
+}
+
+.extra-pad {
+	padding:0px 20px;
+}
+
+.table-scroll {
+	display:block;
+	height:300px;
+	overflow-y:scroll;
+}
+
+.center-table {
+	text-align:center;
+}
+
+
+

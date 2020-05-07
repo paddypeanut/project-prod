@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	<h1 class="white">Welcome <%= current_user.username %></h1>
+	<br>
+
+
+	<%= render partial: "top-panel" %>
+	
+	<% if @todayJobs.count > 0 %>
+		<%= render partial: "today-panel" %>
+	<% else %>
+		<div class="content-panel bg-white">
+			<h3>No Consignments added today</h3>
+			
+		</div>
+		<br>
+	<% end %>
+
+	<% if @weekJobs.count > 0 %>
+		<div id="weekly-roundup">
+			<div class="row bg-white home-panel">
+				<div class="row-100">
+					<h3>Consignments this week</h3>
+					<hr/>
+				</div>
+				<%= render partial: "week-panel" %>
+			</div>
+		</div>
+		
+	<% end %>
+
+	<% if @monthJobs.count > 0 %>
+		<div id="month-panel">
+			<div class="row bg-white home-panel">
+		 		<div class="row-100">
+    				<h3>Consignments this month</h3>
+    		  	<hr/>
+      		</div>
+		<%= render partial: "month-panel" %>
+		</div>
+
+	<% end %>
+</div>
+

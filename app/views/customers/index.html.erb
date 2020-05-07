@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="bg-white content-panel">
+    <p id="notice"><%= notice %></p>
+
+    <h1>Customers</h1>
+    <hr/>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Customer code</th>
+          <th>Company name</th>
+          <th>Address 1</th>
+          <th>Address 2</th>
+          <th>Address 3</th>
+          <th>Eircode</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @test.each do |customer| %>
+          <tr>
+            <td><%= customer.customer_code %></td>
+            <td><%= link_to customer.company_name, customer %></td>
+            <td><%= customer.address1 %></td>
+            <td><%= customer.address2 %></td>
+            <td><%= customer.address3 %></td>
+            <td><%= customer.eircode %></td>
+            <td><%= link_to 'Show', customer %></td>
+            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="row">
+          <div id="pagination">
+            <%= will_paginate @test %>
+          </div>
+        </div>
+
+    <br>
+
+    <button type="button" class="btn btn-primary"><%= link_to 'New Customer', new_customer_path %></button>
+  </div>
+</div>

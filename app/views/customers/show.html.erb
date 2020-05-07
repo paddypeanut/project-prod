@@ -1,0 +1,164 @@
+<div class="container-fluid">
+  <div class="bg-white content-panel">
+    <div class="row">
+      <div class="row-100">
+          <h1><%= @customer.company_name %></h1>
+          <hr/>
+        </div>
+      <div class="col-sm">
+        <p id="notice"><%= notice %></p>
+
+
+        <p>
+          <strong>Customer code:</strong>
+          <%= @customer.customer_code %>
+        </p>
+
+        <p>
+          <strong>Company name:</strong>
+          <%= @customer.company_name %>
+        </p>
+
+        <p>
+          <strong>Address1:</strong>
+          <%= @customer.address1 %>
+        </p>
+
+        <p>
+          <strong>Address2:</strong>
+          <%= @customer.address2 %>
+        </p>
+
+        <p>
+          <strong>Address3:</strong>
+          <%= @customer.address3 %>
+        </p>
+
+        <p>
+          <strong>Eircode:</strong>
+          <%= @customer.eircode %>
+        </p>
+      </div>
+
+      <div class="col-sm">
+        <canvas id="chart1">
+        </canvas>
+      </div>
+    </div>
+
+    <%= link_to 'Edit', edit_customer_path(@customer) %> |
+    <%= link_to 'Back', customers_path %>
+
+
+    <% if @totalJobs >= 1 %>
+    <h3>Total Consignments: <%= @totalJobs %></h3>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Job Number</th>
+          <th>Company Name</th>
+          <th>Reference</th>
+          <th>Parcels</th>
+          <th>Pallets</th>
+          <th>Bundles</th>
+          <th>Address 1</th>
+          <th>Address 2</th>
+          <th>Adrdres 3</th>
+          <th>Date Added</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @results.each do |job| %>
+          <tr>
+            <td><%= job.id %></td>
+            <td><%= job.customer.company_name %></td>
+            <td class="center-table"><%= job.reference %></td>
+            <td class="center-table"><%= job.parcels %></td>
+            <td class="center-table"><%= job.pallets %></td>
+            <td class="center-table"><%= job.bundles %></td>
+            <td><%= job.customer.address1 %></td>
+            <td><%= job.customer.address2 %></td>
+            <td><%= job.customer.address3 %></td>
+            <td><%= job.created_at.to_date.strftime('%d-%m-%Y') %></td>
+            <td><%= link_to 'Show', job %></td>
+            <td><%= link_to 'Edit', edit_job_path(job) %></td>
+            <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="row">
+          <div id="pagination">
+            <%= will_paginate @results %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+</div>
+
+<script>
+var monthChart = document.getElementById('chart1').getContext('2d');
+var chart = new Chart(monthChart, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: [
+          <% @monthGroup.each do |a|%>
+              '<%= @monthNames[a[0].to_f] %>',
+            <% end %>
+        ],
+        datasets: [{
+            label: 'Consignments',
+            backgroundColor: ['rgb(236, 219, 83)',
+                              'rgb(227,65,50)',
+                              'rgb(108,160,220)',
+                              'rgb(147,71,66)',
+                              'rgb(219,178,209)',
+                              'rgb(235,150,135)',
+                              'rgb(0,166,140)',
+                              'rgb(100,83,148)',
+                              'rgb(108,79,60)',
+                              'rgb(235,225,223)',
+                              'rgb(188,108,167)',
+                              'rgb(191,216,51)'],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [
+            <% @monthGroup.each do |a|%>
+              <%= a[1] %>,
+            <% end %>
+            ],
+            
+        }]
+
+    },
+
+    // Configuration options go here
+    options: {
+      scales:{
+        yAxes:[{
+          display:true,
+          ticks:{
+            suggestedMin:0,
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+});
+  </script>
+
+
+
+
+
+  
+
+
+
+

@@ -1,0 +1,2 @@
+module MonthJobsHelper
+end

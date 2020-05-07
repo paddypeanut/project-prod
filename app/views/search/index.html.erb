@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+	<div class="bg-white content-panel">
+		<h1>Search Consignments</h1>
+		<hr/>
+
+		
+			<div class="row">
+			<p class="extra-pad">Search by Company Name, Customer Code or by Refence</p><br>
+			</div>
+			<div class="row">
+			<div class="col-sm">
+				<%= form_tag(search_page_path, :method => "get",   
+				    class: 'search-bar') do %>  
+
+				  <div class="input-group"> 
+				    <%= search_field_tag :search, params[:search], placeholder: "Search Jobs", minlength: 3, class: "form-control" %> 
+
+					    <div class="input-group-btn">  
+					      <%= button_tag " ",:id => 'searchBtn',:class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+					    </div> 
+				    <% end %> 
+				  </div> 
+			</div>
+			</div>
+
+			
+		
+		<br>
+		<br>
+	</div>
+</div>
+

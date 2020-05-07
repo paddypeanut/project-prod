@@ -1,0 +1,2 @@
+module YesterdayJobsHelper
+end

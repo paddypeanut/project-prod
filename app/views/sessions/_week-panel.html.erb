@@ -1,0 +1,116 @@
+	
+		
+		
+			<div class="col-sm">
+				<%= render partial: "sessions/week-table"%>
+
+			</div>
+
+			<div class="col-sm">
+				<canvas id="week-graph-pie">
+				</canvas>
+			</div>
+			<div class="col-sm">
+				<canvas id="week-graph-consignmemts">
+				</canvas>
+			</div>
+		
+		
+
+<script>
+var ctx = document.getElementById('week-graph-consignmemts').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: [
+          <% @weekByDay.each do |a|%>
+              '<%= a[0].to_date.strftime('%A') %>',
+            <% end %>
+        ],
+        datasets: [{
+            label: 'Consignments',
+           	backgroundColor: ['rgb(236, 219, 83)',
+                              'rgb(227,65,50)',
+                              'rgb(108,160,220)',
+                              'rgb(147,71,66)',
+                              'rgb(219,178,209)',
+                              'rgb(235,150,135)',
+                              'rgb(0,166,140)',
+                              'rgb(100,83,148)',
+                              'rgb(108,79,60)',
+                              'rgb(235,225,223)',
+                              'rgb(188,108,167)',
+                              'rgb(191,216,51)'],
+            borderColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [
+            <% @weekByDay.each do |a|%>
+              <%= a[1] %>,
+            <% end %>
+            ],
+            
+        }]
+
+    },
+
+    // Configuration options go here
+    options: {
+      scales:{
+        yAxes:[{
+          display:true,
+          ticks:{
+            suggestedMin:0,
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+});
+
+
+/*window.onload = function() {
+			var weekDoh = document.getElementById('week-graph-pie').getContext('2d');
+			window.myDoughnut = new Chart(weekDoh, config);
+		};*/
+
+	var weekDoh = document.getElementById('week-graph-pie').getContext('2d');
+	var newChart = new Chart(weekDoh, {
+		type: 'doughnut',
+	
+			data: {
+				datasets: [{
+					data: [
+						<%= @weekparcels %>, <%= @weekpallets%> , <%= @weekbundles%>
+					],
+					backgroundColor: [
+						'rgb(255, 159, 64)',
+						'rgb(255, 205, 86)',
+						'rgb(54, 162, 235)'
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Parcels','Pallets','Bundles'
+				]
+			},
+			options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},
+				/*title: {
+					display: true,
+					text: 'Total Pieces'
+				},*/
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+			}
+		});
+
+		
+  </script>

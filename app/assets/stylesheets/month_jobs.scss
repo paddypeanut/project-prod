@@ -1,0 +1,20 @@
+// Place all the styles related to the monthJobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.center {
+	margin:0px auto !important;
+}
+
+#month-search input {
+	height:34px;
+	margin-top:0px;
+}
+
+#month-search label {
+	font-size:1.5em
+}
+
+#monthSelect,#searchBtn {
+	margin-top:-2px;
+}

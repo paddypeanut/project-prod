@@ -1,0 +1,28 @@
+<table class="table table-striped">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Consignents</th>
+							<th>Parcels</th>
+							<th>Pallets</th>
+							<th>Bundles</th>
+						</tr>
+					</thead>
+				<% @weekParcelsByday.each do |job| %>
+						<tr>
+							<td><%= job[0].to_date.strftime("%A") %></td>
+							<td class="center-table"><%= job[1]%></td>
+							<td class="center-table"><%= job[2] %></td>
+							<td class="center-table"><%= job[3] %></td>
+							<td class="center-table"><%= job[4] %></td>
+						</tr>
+				<% end %>
+						<tr>
+						     <td>Total</td>
+						     <td class="center-table"><%=@weekCount%></td>
+						     <td class="center-table"><%= @weekparcels %></td>
+						     <td class="center-table"><%= @weekpallets %></td>
+						     <td class="center-table"><%= @weekbundles %></td>
+						 </tr>
+				</table>
+				

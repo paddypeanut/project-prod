@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project11</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <style>
+#chartdiv {
+  width: 100%;
+  height: 750px;
+}
+
+</style>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'mystyles', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+<!--<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/kelly.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+<div class="my-container">
+
+<% if logged_in? %>
+
+
+    <div class="vertical-nav " id="sidebar">
+  
+ 
+
+ 
+
+      <ul class="nav flex-column  mb-0">
+        <li class="nav-item">
+          <%= link_to 'Dashboard', home_path %>
+        </li>
+
+        <li class="nav-item">
+           <a data-toggle="collapse" href="#collapse1">Consignments</a>
+            <ul id="collapse1" class="collapse">
+              <li class="nav-item">
+                <%= link_to 'All Consignments', jobs_path %>
+              </li>
+              <li>
+                <%= link_to 'New Consignment', new_job_path %>
+              </li>
+              <li>
+                <%= link_to 'Consignments Added Today', daily_jobs_path %>
+              </li>
+              <li>
+                <%= link_to 'Search Consignments', search_jobs_path %>
+              </li>
+              <li>
+                <%= link_to 'Search Range', search_range_path %>
+              </li>
+            </ul>
+        </li>
+          
+        <li class="nav-item">
+          <a data-toggle="collapse" href="#collapse2">Customers</a>
+            <ul id="collapse2" class="collapse">
+              <li>
+               <%= link_to 'Customer List', customers_path%>
+              </li>
+              <li>
+               <%= link_to 'Add Customers', new_customer_path%>
+              </li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to "Log out", logout_path, method: "delete" %>
+        </li>
+       
+      </ul>  
+  </div>
+<% end %>
+
+
+
+    
+   <div class="page-content p-5" id="content">
+  <!-- Toggle button -->
+  
+
+  <!-- Demo content -->
+  <%= yield %>
+  </div>
+</div>
+  </body>
+</html>

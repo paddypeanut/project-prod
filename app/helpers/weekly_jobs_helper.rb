@@ -1,0 +1,2 @@
+module WeeklyJobsHelper
+end

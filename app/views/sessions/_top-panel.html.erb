@@ -1,0 +1,63 @@
+<div id="top-panel">
+	<div class="row">
+		<div class="col-sm home-panel bg-white">
+			<div class="home-panel-content">
+				<div class="row-100">
+					<h3><%= link_to 'Today', daily_jobs_path%></h3>
+					<hr/>
+				</div>
+				<ul>
+					<li>Consigments: <%= @todayCount %></li>
+					<li>Parcels: <%= @todayparcels %></li>
+					<li>Pallets: <%= @todaypallets %></li>
+					<li>Bundles: <%= @todaybundles %></li>
+				</ul>
+
+			</div>
+		</div>
+		<div class="col-sm home-panel bg-white">
+			<div class="home-panel-content">
+				<div class="row-100">
+					<h3><%= link_to 'Yesterday', yesterday_jobs_path %></h3>
+					<hr/>
+				</div>
+				<ul>
+					<li>Consigments: <%= @yesterdayCount %></li>
+					<li>Parcels: <%= @yesterdayparcels %></li>
+					<li>Pallets: <%= @yesterdaypallets %></li>
+					<li>Bundles: <%= @yesterdaybundles%></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm home-panel bg-white">
+			<div class="home-panel-content">
+				<div class="row-100">
+					<h3><%= link_to 'This Week', weekly_jobs_path %></h3>
+					<hr/>
+				</div>
+				<ul>
+					<li>Consigments: <%= @weekCount %></li>
+					<li>Parcels: <%= @weekparcels %></li>
+					<li>Pallets: <%= @weekpallets %></li>
+					<li>Bundles: <%= @weekbundles%></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm home-panel bg-white">
+			<div class="home-panel-content">
+				<div class="row-100">
+					<h3><%= link_to 'This Month', month_jobs_path %></h3>
+					<hr/>
+				</div>
+				<ul>
+					
+					<li>Consigments: <%= @monthCount %></li>
+					<li>Parcels: <%= @monthparcels %></li>
+					<li>Pallets: <%= @monthpallets %></li>
+					<li>Bundles: <%= @monthbundles%></li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

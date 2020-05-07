@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="bg-white content-panel">
+    <h1>Search date range</h1>
+    <hr/>
+
+    <p>Select a start date and end date to seach</p>
+    <br>
+
+    <%= form_tag(search_range_results_path, :method => "get",   
+          class: 'seach-range') do %> 
+          <div id="searchRangeBar" class="row">
+            <div class="col-6 row">
+              <div class="col-3">
+                <p>Start Date: </p>
+              </div>
+              <div class="col-7">
+              <%= date_field_tag :startdate, params[:startdate],  class: "form-control" %> 
+              </div>
+            </div>
+            <div class="col-6 row">
+              <div class="col-3">
+                <p>End Date:</p>
+              </div>
+              <div class="col-7">
+                <%= date_field_tag :enddate, params[:enddate],  class: "form-control" %>
+              </div> 
+              <div class="col-2">
+                <%= button_tag "Select", :class => 'btn btn-info',:name => nil%> 
+              </div>
+            </div>
+          </div>
+     
+    <% end %> 
+    <br>
+    <br>
+    <% if @results.count >= 1 %>
+      <p>Showing <strong><%= @results.count%></strong>  results between : <strong><%=@start.strftime('%d-%m-%Y') %></strong> and <strong><%= @enddate.strftime('%d-%m-%Y') %></strong></p>
+      <br>
+        <table class="table table-striped">
+          <thead>
+        <tr>
+          <th>Job Number</th>
+          <th>Company Name</th>
+          <th>Reference</th>
+          <th>Parcels</th>
+          <th>Pallets</th>
+          <th>Bundles</th>
+          <th>Address 1</th>
+          <th>Address 2</th>
+          <th>Adrdres 3</th>
+          <th>Date Added</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+          <tbody>
+            <% @results.each do |job| %>
+              <tr>
+                <td><%= job.id %></td>
+                <td><%= link_to job.customer.company_name, job.customer %></td>
+                <td class="center-table"><%= job.reference %></td>
+                <td class="center-table"><%= job.parcels %></td>
+                <td class="center-table"><%= job.pallets %></td>
+                <td class="center-table"><%= job.bundles %></td>
+                <td><%= job.customer.address1 %></td>
+                <td><%= job.customer.address2 %></td>
+                <td><%= job.customer.address3 %></td>
+                <td><%= job.created_at.to_date.strftime('%d-%m-%y') %></td>
+                <td><%= link_to 'Show', job %></td>
+                <td><%= link_to 'Edit', edit_job_path(job) %></td>
+                <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="row">
+        <div id="pagination">
+        <%= will_paginate @results %>
+        </div>
+        </div>
+        <br>
+      <% else %>
+      <hr/>
+      <p>No Results Found</p>
+      <% end %>
+  </div>
+</div>
