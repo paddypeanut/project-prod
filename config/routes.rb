@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'welcome', to: 'sessions#welcome'
 
-  get 'home', to: 'sessions#home' , :as => 'home'
+  get 'home', to: 'sessions#home' 
 
   get '/daily_jobs' , to: 'daily_jobs#index', :as => 'daily_jobs'
 
