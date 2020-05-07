@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sqlite3', '~> 1.4',group: :development
 gem 'pg', '0.18.1', group: :production
 
-gem 'rails_12factor', group: :production
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
