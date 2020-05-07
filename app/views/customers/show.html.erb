@@ -82,7 +82,7 @@
             <td><%= job.customer.address1 %></td>
             <td><%= job.customer.address2 %></td>
             <td><%= job.customer.address3 %></td>
-            <td><%= job.created_at.to_date.strftime('%d-%m-%Y') %></td>
+            <td><%= job.created_at %></td>
             <td><%= link_to 'Show', job %></td>
             <td><%= link_to 'Edit', edit_job_path(job) %></td>
             <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
